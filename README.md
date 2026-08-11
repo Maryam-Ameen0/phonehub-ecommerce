@@ -32,7 +32,7 @@ mysql -u root -p ecommerce_store < Backend/database/migration_phase6.sql
 ### 2.2 Backend environment
 ```
 cd Backend
-cp .env.example .env
+cp .env
 ```
 Open `.env` and set your real MySQL password. Everything else can stay as-is for local development.
 
