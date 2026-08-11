@@ -27,25 +27,6 @@ This project was built end-to-end: database design, backend API, frontend interf
 
 ---
 
-## 🖼️ Screenshots
-
-**Shop page (Desktop)**
-![Shop page desktop](screenshots/shop-desktop.png)
-
-**Admin Dashboard — real analytics**
-![Admin dashboard](screenshots/admin-dashboard.png)
-
-**Admin Products management**
-![Admin products](screenshots/admin-products.png)
-
-**Shop page (Mobile)**
-![Shop page mobile](screenshots/shop-mobile.png)
-
-**Product Detail (Mobile)**
-![Product detail mobile](screenshots/product-detail-mobile.png)
-
----
-
 ## 🛠️ Built With
 
 | Layer | Technology |
