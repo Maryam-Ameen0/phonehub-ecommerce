@@ -1,48 +1,89 @@
-# PhoneHub — E-Commerce Store (Buy & Sell Mobile Phones)
+# 📱 PhoneHub — Buy & Sell Mobile Phones
 
-A full-stack marketplace built with **React + Vite** (frontend), **Node.js + Express** (backend), and **MySQL**. Customers can browse, buy, and also list their own phones for sale; admins moderate listings and run the store from an admin panel.
+PhoneHub is a full-stack e-commerce marketplace built specifically for buying and selling mobile phones. It's not just a store — it works like a small version of eBay: the store itself sells phones, **and** everyday users can list their own phones for sale, with an admin reviewing every listing before it goes live.
 
----
-
-## 1. What this project includes
-
-- **Auth** — register/login, JWT sessions, bcrypt password hashing
-- **Catalog** — browse, search, filter (category/brand/condition/price), sort, product detail pages
-- **Cart & Wishlist**
-- **Checkout & Orders** — Cash on Delivery, order history, order detail
-- **Sell a Phone** — any logged-in user can list a phone for sale, with a photo, pending admin approval
-- **Admin Panel** — listing approvals (approve/reject with reason), full product CRUD (add/edit/delete + photo), order management (status updates), user management, and a real analytics dashboard (revenue chart, order breakdown, top products)
-- Responsive, mobile-tested design throughout (eBay-inspired theme — navy/blue with spec-chip badges for condition/storage/color)
+This project was built end-to-end: database design, backend API, frontend interface, and an admin dashboard — all working together as one real application.
 
 ---
 
-## 2. One-time setup
+## ✨ What This Project Can Do
 
-### 2.1 Create the database
-Open MySQL Workbench (or a terminal) and run, **in this order**:
+### For Customers
+- Create an account and log in securely
+- Browse phones with search, filters (category, brand, condition, price), and sorting
+- View detailed product pages with specs (storage, RAM, color, condition)
+- Add items to a cart or a wishlist
+- Checkout and place orders (Cash on Delivery)
+- View order history and track order status
+- List their own phone for sale, with a photo — pending admin approval
+
+### For Admins
+- A dedicated **Admin Panel** with:
+  - **Dashboard** — real sales analytics: revenue chart, order breakdown, best-selling products
+  - **Listing Approvals** — approve or reject phones submitted by users, with an optional reason
+  - **Products** — add, edit, or delete any product, including uploading a photo
+  - **Orders** — view every order and update its status (processing, shipped, delivered, etc.)
+  - **Users** — view all registered users and remove accounts if needed
+
+---
+
+## 🖼️ Screenshots
+
+**Shop page (Desktop)**
+![Shop page desktop](screenshots/shop-desktop.png)
+
+**Admin Dashboard — real analytics**
+![Admin dashboard](screenshots/admin-dashboard.png)
+
+**Admin Products management**
+![Admin products](screenshots/admin-products.png)
+
+**Shop page (Mobile)**
+![Shop page mobile](screenshots/shop-mobile.png)
+
+**Product Detail (Mobile)**
+![Product detail mobile](screenshots/product-detail-mobile.png)
+
+---
+
+## 🛠️ Built With
+
+| Layer | Technology |
+|---|---|
+| Frontend | React, Vite, React Router |
+| Styling | Custom CSS design system (no framework) |
+| Backend | Node.js, Express.js |
+| Database | MySQL |
+| Authentication | JWT (JSON Web Tokens), bcrypt password hashing |
+| File uploads | Multer (product photos) |
+| Charts | Recharts (admin analytics) |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Set up the database
+Run these against your local MySQL, in order:
 ```
 mysql -u root -p < Backend/database/schema.sql
 mysql -u root -p ecommerce_store < Backend/database/migration_phase3.sql
 mysql -u root -p ecommerce_store < Backend/database/migration_phase6.sql
 ```
-`schema.sql` creates the database and all tables (with seed categories/products/admin account already phone-specific). The two migration files add the phone-specific product fields and the marketplace/seller fields — they exist because those features were added after the base schema, but running all three in order gets you the complete, current database.
 
-> If you already ran `schema.sql` in an earlier session and only need what's new, you can just run whichever migration file(s) you haven't run yet — check `Backend/database/` for what's there.
-
-### 2.2 Backend environment
+### 2. Configure the backend
 ```
 cd Backend
-cp .env
+cp .env.example .env
 ```
-Open `.env` and set your real MySQL password. Everything else can stay as-is for local development.
+Open `.env` and set your MySQL password. Everything else can stay as-is.
 
-### 2.3 Install dependencies
+### 3. Install dependencies
 ```
 cd Backend && npm install
 cd ../frontend && npm install
 ```
 
-### 2.4 Run it
+### 4. Run the project
 ```
 # Terminal 1
 cd Backend && npm run dev
@@ -50,88 +91,79 @@ cd Backend && npm run dev
 # Terminal 2
 cd frontend && npm run dev
 ```
-Open the URL Vite prints (usually `http://localhost:5173`).
+Open the link Vite prints (usually `http://localhost:5173`).
 
 **Default admin login:** `admin@store.com` / `Admin@123`
 
-### 2.5 Testing on your phone (same WiFi)
+### 5. Testing on a phone (same WiFi)
 ```
 cd frontend && npm run dev -- --host
 ```
-Vite will print a "Network" URL (something like `http://192.168.x.x:5173`) — open that on your phone. The app automatically points itself at your computer's IP for the backend too, no extra config needed.
+Use the "Network" address Vite prints instead of localhost.
 
-**If it loads but login/products don't work:** your computer's firewall is likely blocking the connection. On Windows, open "Windows Defender Firewall with Advanced Security" → Inbound Rules → New Rule → Port → TCP → specific ports `5000,5173` → Allow the connection → tick Private → finish. Restart both servers after.
-
-### 2.6 Letting someone on a different network test it
-A LAN IP only works for devices on your own WiFi. For someone elsewhere, use a tunnel:
-
-1. Install [ngrok](https://ngrok.com) and sign up (free tier is fine).
-2. Run your backend and frontend as normal (`npm run dev` in each).
-3. In two more terminals, run:
-   ```
-   ngrok http 5000    # backend tunnel — copy the https URL it gives you
-   ngrok http 5173    # frontend tunnel — this is the link you share
-   ```
-4. Copy `frontend/.env.example` to `frontend/.env` and set:
-   ```
-   VITE_API_URL=https://<your-backend-ngrok-url>
-   ```
-   (the URL from step 3's backend tunnel, no trailing slash)
-5. Restart the frontend (`npm run dev`) so it picks up the new `.env`.
-6. Share the **frontend** ngrok URL — that's what the other person opens.
-
-Free ngrok URLs change every time you restart the tunnel, so you'll redo steps 3–5 each session. For something permanent, you'd want a real deployment instead (ask if you want help with that).
+### 6. Sharing with someone on a different network
+See the "Letting someone on a different network test it" section below — this uses a free tool called ngrok to generate a temporary public link.
 
 ---
 
-## 3. Project structure
+## 📁 Project Structure
 
 ```
 Backend/
-  config/db.js              MySQL connection
-  controllers/              Route logic (auth, products, cart, wishlist, orders, listings, admin/*)
-  routes/                   Express routes, mirrors controllers
-  middleware/                JWT auth, admin-only guard, image upload (multer)
-  database/
-    schema.sql               Full schema + seed data (fresh installs)
-    migration_phase3.sql      Adds phone-specific product fields + categories
-    migration_phase6.sql      Adds seller_id / approval_status (marketplace)
-  uploads/                    Product photos (created automatically)
-  server.js                  App entry point
+  config/db.js          Database connection
+  controllers/          Business logic for each feature
+  routes/                API endpoints
+  middleware/            Login checks, admin checks, file uploads
+  database/              Schema and migration files
+  uploads/                Product photos (created automatically)
 
 frontend/
   src/
-    pages/                   One file per page (Shop, ProductDetail, Cart, Checkout, Sell, admin/*, ...)
-    pages/admin/             Admin Panel: Dashboard, Listings, Products, Orders, Users
-    components/               Navbar, ProductCard, FilterSidebar, AdminLayout, etc.
-    context/                  AuthContext, CartContext, WishlistContext (global state)
-    services/api.js           Axios instance (auto-attaches login token)
-    config.js                  API URL — auto-adapts to localhost or LAN IP
-    styles/tokens.css          Design system: colors, fonts, spacing
+    pages/                Every screen in the app
+    pages/admin/          Admin Panel screens
+    components/            Reusable UI pieces (Navbar, ProductCard, etc.)
+    context/                App-wide state (login, cart, wishlist)
+    services/api.js         Handles all requests to the backend
+    styles/tokens.css        Colors, fonts, and spacing used everywhere
 ```
 
 ---
 
-## 4. How the pieces fit together
+## 🌐 Letting Someone on a Different Network Test It
 
-- **Design system**: `frontend/src/styles/tokens.css` holds every color/font/spacing value used across the app — change it there once, it updates everywhere.
-- **Auth**: `AuthContext` holds the logged-in user and token (persisted in localStorage); `services/api.js` attaches the token to every request automatically.
-- **Marketplace flow**: any user submits a listing via `/sell` → it's `pending` → hidden from the shop → admin approves/rejects it in the Admin Panel → approved listings appear in the shop with "Sold by [name]".
-- **Images**: uploaded via the `Sell` and admin `Add/Edit Product` forms, stored in `Backend/uploads/`, served at `/uploads/<filename>`. The frontend resolves these through `frontend/src/config.js`, which points at whatever host the page itself was loaded from (localhost or your LAN IP) — so it works the same on desktop and phone without editing anything.
+A phone on your own WiFi can reach your computer directly. Someone on a different network (different WiFi, different city) cannot — for that, you need a tunnel:
+
+1. Install [ngrok](https://ngrok.com) (free account is enough).
+2. Run the backend and frontend normally.
+3. Open two more terminals:
+   ```
+   ngrok http 5000
+   ngrok http 5173
+   ```
+4. Copy `frontend/.env.example` to `frontend/.env` and set `VITE_API_URL` to the address the **backend** tunnel gave you.
+5. Restart the frontend so it picks up the change.
+6. Share the **frontend** tunnel address — that's the link the other person opens.
+
+*(Free ngrok links change every time you restart them, so this is best for occasional testing, not a permanent link.)*
 
 ---
 
-## 5. What's been tested
+## ✅ What's Been Tested
 
-Every backend endpoint was tested against a real running database before being handed over — not just written and assumed to work. That includes: full auth flow, cart/wishlist stock checks, checkout as an atomic transaction (stock decrement + order creation + cart clear all-or-nothing), the complete listing → moderation → approval loop with real image uploads, admin order/user/product management, and role-based access control (customers blocked from admin routes, users blocked from each other's orders, etc.).
+Every backend feature was tested against a real, running database before being considered done — including login/signup, cart and stock limits, the full checkout process, the complete "list a phone → admin approves it → it appears in the shop" flow, and all the admin actions. The interface was also checked on both desktop and mobile screen sizes to make sure nothing breaks or overflows on a smaller screen.
 
-The frontend was also checked with a real headless browser at both desktop and mobile (390px) widths across every page — not just visually, but by measuring actual page width to catch horizontal-overflow bugs. Two real issues were found and fixed this way: the shop's filter sidebar burying products on mobile (now a collapsible toggle), and the admin panel overflowing sideways on phones (a CSS grid sizing bug). Both were re-verified after the fix.
+---
 
-## 6. Known limitations / things you may want to add later
-- Payment is Cash-on-Delivery only (as requested) — no real payment gateway
-- No email notifications (order confirmation, approval/rejection emails, etc.)
-- No password-reset flow
-- Product images are single-photo only (no gallery/multiple photos per listing)
-- No pagination controls in the UI yet for very large catalogs (backend supports it, frontend doesn't expose page controls)
+## 🔧 Possible Future Improvements
 
-If you want any of these, just ask and I'll build it the same way as everything else here — tested before it's handed over.
+- Real payment gateway (currently Cash on Delivery only)
+- Email notifications for orders and listing approvals
+- Password reset
+- Multiple photos per listing
+- Pagination controls on the shop page for very large catalogs
+
+---
+
+## 👩‍💻 Author
+
+Built by **Maryam** as a full-stack learning project.
