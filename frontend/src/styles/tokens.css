@@ -1,0 +1,101 @@
+/* ============================================================
+   Design tokens — eBay-inspired, mobile-phones marketplace theme
+   Every color/spacing/radius decision for the app flows from here.
+   ============================================================ */
+
+:root {
+  /* Colors */
+  --navy: #0b1e3d;
+  --navy-light: #142b52;
+  --blue: #0058d3;
+  --blue-dark: #00408f;
+  --offwhite: #f4f6f9;
+  --white: #ffffff;
+  --graphite: #1f2430;
+  --muted: #6b7280;
+  --border: #e2e6ec;
+  --deal-red: #e1483b;
+  --success: #1e8e5a;
+  --success-bg: #e7f5ee;
+
+  /* Type */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Shadow */
+  --shadow-card: 0 1px 2px rgba(11, 30, 61, 0.06), 0 4px 12px rgba(11, 30, 61, 0.06);
+  --shadow-lift: 0 8px 24px rgba(11, 30, 61, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--offwhite);
+  color: var(--graphite);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+/* Visible keyboard focus everywhere — accessibility floor */
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Utility: wrap any wide table in this so it scrolls horizontally on small screens
+   instead of breaking the layout or forcing the whole page to scroll sideways. */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-scroll .admin-table {
+  min-width: 560px;
+}

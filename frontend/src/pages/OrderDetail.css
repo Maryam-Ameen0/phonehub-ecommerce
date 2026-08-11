@@ -1,0 +1,101 @@
+.order-detail {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: var(--space-5);
+}
+
+.order-detail__status {
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--muted);
+}
+
+.order-detail__back {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: var(--space-4);
+}
+
+.order-detail__success {
+  background: var(--success-bg);
+  color: var(--success);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: var(--space-5);
+}
+
+.order-detail__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.order-detail__header h1 {
+  font-size: 1.4rem;
+}
+
+.order-detail__date {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 4px 0 0 0;
+}
+
+.order-detail__card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  margin-bottom: var(--space-4);
+}
+
+.order-detail__card h3 {
+  font-size: 0.95rem;
+  margin-bottom: var(--space-3);
+}
+
+.order-detail__card p {
+  margin: 0 0 4px 0;
+  color: var(--graphite);
+  font-size: 0.9rem;
+}
+
+.order-detail__payment {
+  color: var(--muted);
+  margin-top: var(--space-2);
+}
+
+.order-detail__item {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.order-detail__item-name {
+  font-weight: 500;
+  margin: 0;
+}
+
+.order-detail__item-qty {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 2px 0 0 0;
+}
+
+.order-detail__item-price {
+  font-family: var(--font-mono);
+  margin: 0;
+}
+
+.order-detail__total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+}

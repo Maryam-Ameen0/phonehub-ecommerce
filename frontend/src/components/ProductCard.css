@@ -1,0 +1,116 @@
+.product-card {
+  display: block;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  color: var(--graphite);
+  text-decoration: none;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.product-card__image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-card__wishlist {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  font-size: 1.1rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card__wishlist.is-active {
+  color: var(--deal-red);
+}
+
+.product-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card__body {
+  padding: var(--space-4);
+}
+
+.product-card__brand {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin: 0 0 2px 0;
+}
+
+.product-card__name {
+  font-size: 1rem;
+  margin: 0 0 var(--space-3) 0;
+  line-height: 1.3;
+  min-height: 2.6em;
+}
+
+.product-card__seller {
+  font-size: 0.72rem;
+  color: var(--blue);
+  margin: -6px 0 var(--space-2) 0;
+}
+
+.product-card__chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+
+.product-card__price {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0;
+}
+
+.product-card__low-stock {
+  font-size: 0.75rem;
+  color: var(--deal-red);
+  margin: var(--space-1) 0 0 0;
+}
+
+.product-card__out {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: var(--space-1) 0 0 0;
+}
+
+.product-card__add {
+  width: 100%;
+  margin-top: var(--space-3);
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.product-card__add:hover {
+  background: var(--blue);
+}

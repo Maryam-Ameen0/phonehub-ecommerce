@@ -1,0 +1,65 @@
+.admin-orders__status {
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--muted);
+}
+
+.admin-orders h1 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-4);
+}
+
+.admin-orders__filters {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.admin-orders__filters button {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  text-transform: capitalize;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.admin-orders__filters button.is-active {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+
+.admin-orders__email {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.admin-orders__select {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  font-size: 0.82rem;
+  text-transform: capitalize;
+  background: var(--white);
+}
+
+.admin-orders__select--delivered {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.admin-orders__select--cancelled {
+  border-color: var(--deal-red);
+  color: var(--deal-red);
+}
+
+.admin-orders__empty {
+  text-align: center;
+  color: var(--muted);
+  padding: var(--space-6);
+}

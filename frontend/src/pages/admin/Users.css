@@ -1,0 +1,32 @@
+.admin-users__status {
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--muted);
+}
+
+.admin-users h1 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-4);
+}
+
+.role-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  text-transform: capitalize;
+  background: var(--offwhite);
+  color: var(--muted);
+}
+
+.role-badge--admin {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.admin-users__delete {
+  background: none;
+  border: none;
+  color: var(--deal-red);
+  font-size: 0.82rem;
+}
